@@ -25,9 +25,10 @@ async def on_message(message):
   if message.content.lower().startswith('!hello'):
     await message.channel.send('Hello!')
 
-  # user sends "!ping", bot responds w/ "Pong" + bot latency
+  # user sends "!ping", bot responds w/ "Pong" + bot latency and a gif
   elif message.content.lower().startswith('!ping'):
     await message.channel.send(f'Pong :ping_pong: (Bot latency: **{round(client.latency * 1000)}ms**)')
+    await message.channel.send(file=discord.File('resources/pingpong.gif'))
 
   # user sends "!help", bot sends commands file
   elif message.content.lower().startswith("!help"):

@@ -7,7 +7,7 @@
 >   Bot responds with "Hello!"
 
 >**!ping**     
->   Bot responds with "Pong!" and botlatency
+>   Bot responds with "Pong!" and botlatency + a gif from Ping Pong The Animation
 
 >**!github**    
 >   Flexes github link
