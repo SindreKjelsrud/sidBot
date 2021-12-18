@@ -12,8 +12,10 @@ my_secret = os.environ['TOKEN']
 # arrays containing answers
 xmasAnswers = ['Happy Chrismis!', 'Its Chrismin!', 'Merry Chrisis!', 'Merry Chrysler!']
 coinflip = ['Heads', 'Not Sonic lol (Tails..)']
+dogTitles = ['Who let the dogs out?', 'woof', 'Whos a good boy!', 'meow', 'Mr. GoodBoy']
 
 
+## APIs
 # gets a quote from zenquotes.io
 def get_quote():
   response = requests.get('https://zenquotes.io/api/random')
@@ -23,8 +25,8 @@ def get_quote():
 
 # gets a meme from Huge RedditMemesAPI
 def get_meme():
-  r = requests.get('https://memes.blademaker.tv/api?lang=en')
-  res = r.json()
+  response = requests.get('https://memes.blademaker.tv/api?lang=en')
+  res = response.json()
   title = res['title']
   ups = res['ups']
   downs = res['downs']
@@ -34,12 +36,21 @@ def get_meme():
   meme.set_footer(text=f"👍:{ups}")
   return meme
 
+# gets a dog from Dog API
+def get_dog():
+  response = requests.get('https://dog.ceo/api/breeds/image/random')
+  res = response.json()
+  dog = discord.Embed(title = random.choice(dogTitles))
+  dog.set_image(url = res['message'])
+  return dog
+
 # when bot is ready
 @client.event   # Register an event
 async def on_ready():
   print('We have logged in as {0.user}'.format(client))
 
 
+## MESSAGE RESPONSES
 # bot senses a message & responds
 @client.event
 async def on_message(message):
@@ -81,6 +92,11 @@ async def on_message(message):
   elif message.content.lower().startswith("!plsmeme"):
     meme = get_meme()
     await message.channel.send(embed = meme)
+
+  # user sends "!plsdog", bot sends picture of dog from Dog API
+  elif message.content.lower().startswith("!plsdog"):
+    dog = get_dog()
+    await message.channel.send(embed = dog)
 
 
 # run bot

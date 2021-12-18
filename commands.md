@@ -23,3 +23,6 @@
 
 >**!plsmeme**    
 >   Bot supplies with premium memes from subreddits across Reddit from Huge RedditMemesAPI
+
+>**!plsdog**    
+>   Bot supplies with pictures of cute doggos across the whole internet through Dog API
