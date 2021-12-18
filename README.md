@@ -1,4 +1,4 @@
-# sidBot | A Discord bot created by Sindre Kjelsrud
+# 🤖sidBot | A Discord bot created by Sindre Kjelsrud
 
 ## List of features/commands:
 --------------------------------
