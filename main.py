@@ -14,7 +14,7 @@ coinflip = ['Heads', 'Not Sonic lol (Tails..)']
 async def on_ready():
   print('We have logged in as {0.user}'.format(client))
 
-# bot sense a message & responds
+# bot senses a message & responds
 @client.event
 async def on_message(message):
   # if message is from bot, return nothing
