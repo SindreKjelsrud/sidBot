@@ -1,6 +1,6 @@
 # sidBot | A Discord bot created by Sindre Kjelsrud
 
-## List of sidBots features/commands:
+## List of features/commands:
 --------------------------------
 >**!help**  
 >   List of commands
