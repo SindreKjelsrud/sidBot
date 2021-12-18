@@ -21,6 +21,18 @@ def get_quote():
   quote = json_data[0]['q'] + ' -' + json_data[0]['a']
   return(quote)
 
+# gets a meme from Huge RedditMemesAPI
+def get_meme():
+  r = requests.get('https://memes.blademaker.tv/api?lang=en')
+  res = r.json()
+  title = res['title']
+  ups = res['ups']
+  downs = res['downs']
+  sub = res['subreddit']
+  meme = discord.Embed(title = f'{title}\nSubreddit: {sub}')
+  meme.set_image(url = res['image'])
+  meme.set_footer(text=f"👍:{ups}")
+  return m
 
 # when bot is ready
 @client.event   # Register an event
@@ -64,6 +76,11 @@ async def on_message(message):
   elif message.content.lower().startswith("!inspire"):
     quote = get_quote()
     await message.channel.send(quote)
+
+  # user sends "!plsmeme", bot sends meme from random subreddit
+  elif message.content.lower().startswith("!plsmeme"):
+    meme = get_meme()
+    await message.channel.send(embed = meme)
 
 
 # run bot

@@ -20,3 +20,6 @@
 
 >**!inspire**    
 >   Bot inspires user with a quote from zenquotes.io
+
+>**!plsmeme**    
+>   Bot supplies with premium memes from subreddits across Reddi from Huge RedditMemesAPI
