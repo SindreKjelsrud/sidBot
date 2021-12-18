@@ -19,3 +19,6 @@
 
 >**merry christmas**     
 >   Someone writes "merry christmas" and bot responds w/ legendary vine quote selected from an array
+
+>**!inspire**    
+>   Bot inspires user with a quote from zenquotes.io
