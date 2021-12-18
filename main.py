@@ -32,7 +32,7 @@ def get_meme():
   meme = discord.Embed(title = f'{title}\nSubreddit: {sub}')
   meme.set_image(url = res['image'])
   meme.set_footer(text=f"👍:{ups}")
-  return m
+  return meme
 
 # when bot is ready
 @client.event   # Register an event
