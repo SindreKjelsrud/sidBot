@@ -44,10 +44,12 @@ def get_dog():
   dog.set_image(url = res['message'])
   return dog
 
-# when bot is ready
+## BOT READY
 @client.event   # Register an event
 async def on_ready():
   print('We have logged in as {0.user}'.format(client))
+  activity = discord.Game(name = "!help")  # sets bot activity
+  await client.change_presence(status = discord.Status.online, activity = activity)
 
 
 ## MESSAGE RESPONSES
