@@ -28,3 +28,9 @@
 
 >**!plsdog**    
 >   Bot supplies with pictures of cute doggos across the whole internet through Dog API
+
+
+## To Do:
+--------------------------------
+>**!rps**  
+>   Rock-Paper-Scissors game
