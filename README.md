@@ -34,3 +34,6 @@
 --------------------------------
 >**!rps**  
 >   Rock-Paper-Scissors game
+
+>**!poll**  
+>   Bot lets user create a poll with emojis which indicates options
