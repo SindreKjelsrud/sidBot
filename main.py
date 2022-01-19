@@ -1,9 +1,11 @@
 import os
 import discord
-
 import requests
+#from requests import Request, Session
+#from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
 import random
+from keep_alive import keep_alive
 
 client = discord.Client()
 my_secret = os.environ['TOKEN']
@@ -44,6 +46,37 @@ def get_dog():
   dog.set_image(url = res['message'])
   return dog
 
+# crypto API
+# def get_crypto():
+#   url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
+#   parameters = {
+#     'start':'1',
+#     'limit':'5000',
+#     'convert':'USD'
+#   }
+#   headers = {
+#     'Accepts': 'application/json',
+#     'X-CMC_PRO_API_KEY': '5c96c638-c66f-4ddb-9c5d-7a77d5d83258',
+#   }
+
+#   session = Session()
+#   session.headers.update(headers)
+
+#   try:
+#     response = session.get(url, params=parameters)
+  
+  
+#   #res = response.json()
+#   #name = res['name']
+#   #id = res['id']
+#   #tags = res['tags']
+#   #crypto = discord.Embed(title = f'{id}\nMiniable: {tags}')
+
+#     json_data = json.loads(response.text)
+#     return(json_data)
+#   except (ConnectionError, Timeout, TooManyRedirects) as e:
+#     return(e)
+
 ## BOT READY
 @client.event   # Register an event
 async def on_ready():
@@ -68,10 +101,6 @@ async def on_message(message):
   elif message.content.lower().startswith('!ping'):
     await message.channel.send(f'Pong :ping_pong: (Bot latency: **{round(client.latency * 1000)}ms**)')
     await message.channel.send(file=discord.File('resources/pingpong.gif'))
-
-  # user sends "!help", bot sends commandsfile
-  elif message.content.lower().startswith("!help"):
-			await message.channel.send(file=discord.File("commands.md"))
 
   # user sends "!coinflip", bot returns result
   elif message.content.lower().startswith("!coinflip"):
@@ -100,6 +129,48 @@ async def on_message(message):
     dog = get_dog()
     await message.channel.send(embed = dog)
 
+  # user sends "!invbot", bot responds w/ invite link for bot
+  elif message.content.lower().startswith("!invbot"):
+    embedVar = discord.Embed(color=0x7B64FF)
+      
+    embedVar.add_field(name="Bot Invite Link", value="https://discord.com/oauth2/authorize?client_id=921786935662477412&permissions=274881309760&scope=bot", inline=False)
+
+    await message.channel.send(embed=embedVar)
+
+  # crypto - *not working*
+#  elif message.content.lower().startswith("!crypto"):
+#    crypto = get_crypto()
+#    await message.channel.send(crypto)
+
+
+  # user sends "!help", bot sends commandsfile
+  elif message.content.lower().startswith("!help"):
+    embedVar = discord.Embed(title="List of sidBots features/commands:", description="--------------------------------", color=0x7B64FF)
+      
+    embedVar.add_field(name="!help", value="List of commands", inline=False)
+
+    embedVar.add_field(name="!hello", value="Bot responds with 'Hello!'", inline=False)
+
+    embedVar.add_field(name="!ping", value="Bot responds with 'Pong!' and botlatency + a gif from Ping Pong The Animation", inline=False)
+
+    embedVar.add_field(name="!github", value="Flexes github link", inline=False)
+
+    embedVar.add_field(name="!coinflip", value="Heads or Tails!", inline=False)
+
+    embedVar.add_field(name="merry christmas", value="Someone writes 'merry christmas' and bot responds w/ legendary vine quote selected from an array", inline=False)
+
+    embedVar.add_field(name="!inspire", value="Bot inspires user with a quote from zenquotes.io", inline=False)
+
+    embedVar.add_field(name="!plsmeme", value="Bot supplies with premium memes from subreddits across Reddit from Huge RedditMemesAPI", inline=False)
+
+    embedVar.add_field(name="!plsdog", value="Bot supplies with pictures of cute doggos across the whole internet through Dog API", inline=False)
+
+    embedVar.add_field(name="!invbot", value="Bot sends invite link for itself", inline=False)
+
+    await message.channel.send(embed=embedVar)
+
+# keeps bot alive
+keep_alive()
 
 # run bot
 client.run(my_secret)
