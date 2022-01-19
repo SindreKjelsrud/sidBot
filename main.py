@@ -1,8 +1,6 @@
 import os
 import discord
 import requests
-#from requests import Request, Session
-#from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
 import random
 from keep_alive import keep_alive
@@ -14,7 +12,7 @@ my_secret = os.environ['TOKEN']
 # arrays containing answers
 xmasAnswers = ['Happy Chrismis!', 'Its Chrismin!', 'Merry Chrisis!', 'Merry Chrysler!']
 coinflip = ['Heads', 'Not Sonic lol (Tails..)']
-dogTitles = ['Who let the dogs out?', 'woof', 'Whos a good boy!', 'meow', 'Mr. GoodBoy']
+dogTitles = ['Who let the dogs out?:dog:', 'woof:dog:', 'Whos a good boy!:dog:', 'meow:cat:', 'Mr. GoodBoy:dog:', 'Bork Bork!:dog:']
 
 
 ## APIs
@@ -31,7 +29,6 @@ def get_meme():
   res = response.json()
   title = res['title']
   ups = res['ups']
-  downs = res['downs']
   sub = res['subreddit']
   meme = discord.Embed(title = f'{title}\nSubreddit: {sub}')
   meme.set_image(url = res['image'])
@@ -45,37 +42,6 @@ def get_dog():
   dog = discord.Embed(title = random.choice(dogTitles))
   dog.set_image(url = res['message'])
   return dog
-
-# crypto API
-# def get_crypto():
-#   url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
-#   parameters = {
-#     'start':'1',
-#     'limit':'5000',
-#     'convert':'USD'
-#   }
-#   headers = {
-#     'Accepts': 'application/json',
-#     'X-CMC_PRO_API_KEY': '5c96c638-c66f-4ddb-9c5d-7a77d5d83258',
-#   }
-
-#   session = Session()
-#   session.headers.update(headers)
-
-#   try:
-#     response = session.get(url, params=parameters)
-  
-  
-#   #res = response.json()
-#   #name = res['name']
-#   #id = res['id']
-#   #tags = res['tags']
-#   #crypto = discord.Embed(title = f'{id}\nMiniable: {tags}')
-
-#     json_data = json.loads(response.text)
-#     return(json_data)
-#   except (ConnectionError, Timeout, TooManyRedirects) as e:
-#     return(e)
 
 ## BOT READY
 @client.event   # Register an event
@@ -137,12 +103,6 @@ async def on_message(message):
 
     await message.channel.send(embed=embedVar)
 
-  # crypto - *not working*
-#  elif message.content.lower().startswith("!crypto"):
-#    crypto = get_crypto()
-#    await message.channel.send(crypto)
-
-
   # user sends "!help", bot sends commandsfile
   elif message.content.lower().startswith("!help"):
     embedVar = discord.Embed(title="List of sidBots features/commands:", description="--------------------------------", color=0x7B64FF)
@@ -174,3 +134,51 @@ keep_alive()
 
 # run bot
 client.run(my_secret)
+
+
+
+
+###############################
+
+#from requests import Request, Session
+#from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
+
+###############################
+
+# crypto API
+# def get_crypto():
+#   url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
+#   parameters = {
+#     'start':'1',
+#     'limit':'5000',
+#     'convert':'USD'
+#   }
+#   headers = {
+#     'Accepts': 'application/json',
+#     'X-CMC_PRO_API_KEY': '5c96c638-c66f-4ddb-9c5d-7a77d5d83258',
+#   }
+
+#   session = Session()
+#   session.headers.update(headers)
+
+#   try:
+#     response = session.get(url, params=parameters)
+  
+  
+#   #res = response.json()
+#   #name = res['name']
+#   #id = res['id']
+#   #tags = res['tags']
+#   #crypto = discord.Embed(title = f'{id}\nMiniable: {tags}')
+
+#     json_data = json.loads(response.text)
+#     return(json_data)
+#   except (ConnectionError, Timeout, TooManyRedirects) as e:
+#     return(e)
+
+################################
+
+  # crypto - *not working*
+#  elif message.content.lower().startswith("!crypto"):
+#    crypto = get_crypto()
+#    await message.channel.send(crypto)
