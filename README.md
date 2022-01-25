@@ -42,4 +42,7 @@
 >   Bot lets user create a poll with emojis which indicates options
 
 >**!movie**  
->   Bot sends a movie recommendation from a moviedatabase
+>   Bot sends a movie recommendation from a movie database
+
+>**!trivia**  
+>   Bot sends a random trivia question both with and without multiple choice answers
