@@ -46,3 +46,6 @@
 
 >**!trivia**  
 >   Bot sends a random trivia question both with and without multiple choice answers
+
+>**!stats**  
+>   Bot sends a statistic for the discord server, like total servermembers, bots and online members
