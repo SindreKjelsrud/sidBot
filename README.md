@@ -1,6 +1,5 @@
 # 🤖sidBot | A Discord bot created by Sindre Kjelsrud
-A Relatively Simply Awesome Discord bot with Music, Games, Comics, Memes and other cool features.
-This bot is made in Python 3.8 using [discord.py](https://github.com/Rapptz/discord.py)
+A simple Discord bot made in Python 3.8 using [discord.py](https://github.com/Rapptz/discord.py)
 
 [![Add sidBot](https://img.shields.io/badge/-Add%20Bot-141B2E?style=for-the-badge&logo=discord)](https://discord.com/oauth2/authorize?client_id=921786935662477412&permissions=274881309760&scope=bot) <br>
 
