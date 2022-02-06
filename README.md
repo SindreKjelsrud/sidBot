@@ -7,7 +7,7 @@ A simple Discord bot made in Python 3.8 using [discord.py](https://github.com/Ra
 
 List of features/commands
 --------------------------------
-:volcano: Prefix Commands:
+:volcano: Commands:
 ```
 !help       - List of commands
 !hello      - Bot responds with "Hello!"
@@ -21,7 +21,7 @@ List of features/commands
 ```
 :speech_balloon: Auto Responds:
 ```
-"merry christmas"       - Someone writes "merry christmas" and bot responds w/ legendary vine quote selected from an array
+"merry christmas"    - Someone writes "merry christmas" and bot responds w/ legendary vine quote selected from an array
 ```
 :scroll: To-Do List:
 ```
