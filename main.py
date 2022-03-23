@@ -3,25 +3,26 @@ import discord
 import requests
 import json
 import random
+import asyncio
 from keep_alive import keep_alive
 
-client = discord.Client()
+client=discord.Client()
 my_secret = os.environ['TOKEN']
 
 
 # arrays containing answers
 xmasAnswers = ['Happy Chrismis!', 'Its Chrismin!', 'Merry Chrisis!', 'Merry Chrysler!']
-coinflip = ['Heads', 'Not Sonic lol (Tails..)']
+coinflip = ['```Heads```', '```Tails```']
 dogTitles = ['Who let the dogs out?:dog:', 'woof:dog:', 'Whos a good boy!:dog:', 'meow:cat:', 'Mr. GoodBoy:dog:', 'Bork Bork!:dog:']
 
+############ APIs ################
 
-## APIs
 # gets a quote from zenquotes.io
 def get_quote():
   response = requests.get('https://zenquotes.io/api/random')
   json_data = json.loads(response.text)
-  quote = json_data[0]['q'] + ' -' + json_data[0]['a']
-  return(quote)
+  quote = json_data[0]['q'] + ' \n-' + json_data[0]['a']
+  return('```' + quote + '```')
 
 # gets a meme from Huge RedditMemesAPI
 def get_meme():
@@ -43,7 +44,8 @@ def get_dog():
   dog.set_image(url = res['message'])
   return dog
 
-## BOT READY
+################ BOT READY ####################
+
 @client.event   # Register an event
 async def on_ready():
   print('We have logged in as {0.user}'.format(client))
@@ -51,7 +53,8 @@ async def on_ready():
   await client.change_presence(status = discord.Status.online, activity = activity)
 
 
-## MESSAGE RESPONSES
+############## MESSAGE RESPONSES ################
+
 # bot senses a message & responds
 @client.event
 async def on_message(message):
@@ -70,7 +73,9 @@ async def on_message(message):
 
   # user sends "!coinflip", bot returns result
   elif message.content.lower().startswith("!coinflip"):
-			await message.channel.send(random.choice(coinflip))
+    await message.channel.send(file=discord.File('resources/coinspin.gif'))
+    await asyncio.sleep(1)
+    await message.channel.send(random.choice(coinflip))
 
   # user sends "!github", bot responds w/ my GitHub profile
   elif message.content.lower().startswith("!github"):
@@ -105,29 +110,15 @@ async def on_message(message):
 
   # user sends "!help", bot sends commandsfile
   elif message.content.lower().startswith("!help"):
-    embedVar = discord.Embed(title="List of sidBots features/commands:", description="--------------------------------", color=0x7B64FF)
+    embedVar = discord.Embed(title="List of sidBots features/commands:", description="", color=0x7B64FF)
       
-    embedVar.add_field(name="!help", value="List of commands", inline=False)
+    embedVar.add_field(name=":volcano: Commands:", 
+                      value='!help \n - List of commands \n\n!hello \n - Bot responds with "Hello!" \n\n!ping \n- Bot responds with "Pong!" and botlatency + a gif from Ping Pong The Animation \n\n!github \n- Flexes github link \n\n!coinflip\n- Heads or Tails! \n\n!inspire\n- Bot inspires user with a quote from zenquotes.io \n\n!plsmeme\n- Bot supplies with premium memes from subreddits across Reddit from Huge RedditMemesAPI \n\n!plsdog\n- Bot supplies with pictures of cute doggos across the whole internet through Dog API \n\n!invbot\n- Bot sends invite link for itself', inline=True)
 
-    embedVar.add_field(name="!hello", value="Bot responds with 'Hello!'", inline=False)
-
-    embedVar.add_field(name="!ping", value="Bot responds with 'Pong!' and botlatency + a gif from Ping Pong The Animation", inline=False)
-
-    embedVar.add_field(name="!github", value="Flexes github link", inline=False)
-
-    embedVar.add_field(name="!coinflip", value="Heads or Tails!", inline=False)
-
-    embedVar.add_field(name="merry christmas", value="Someone writes 'merry christmas' and bot responds w/ legendary vine quote selected from an array", inline=False)
-
-    embedVar.add_field(name="!inspire", value="Bot inspires user with a quote from zenquotes.io", inline=False)
-
-    embedVar.add_field(name="!plsmeme", value="Bot supplies with premium memes from subreddits across Reddit from Huge RedditMemesAPI", inline=False)
-
-    embedVar.add_field(name="!plsdog", value="Bot supplies with pictures of cute doggos across the whole internet through Dog API", inline=False)
-
-    embedVar.add_field(name="!invbot", value="Bot sends invite link for itself", inline=False)
+    embedVar.add_field(name=":speech_balloon: Auto Responds:",                    value='"merry christmas"\n- Someone writes "merry christmas" and bot responds w/ legendary vine quote selected from an array', inline=True)
 
     await message.channel.send(embed=embedVar)
+
 
 # keeps bot alive
 keep_alive()
