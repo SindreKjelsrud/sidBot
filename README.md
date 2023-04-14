@@ -1,6 +1,6 @@
 # 🤖sidBot | A Discord bot created by Sindre Kjelsrud
 
-**_Currently sidBot-js is the only one active_**
+**_Currently sidBot-js is the only one active, which is selfhosted by me_**
 
 [![Add sidBot](https://img.shields.io/badge/-Add%20Bot-141B2E?style=for-the-badge&logo=discord)](https://discord.com/api/oauth2/authorize?client_id=1054491638682095626&permissions=8&scope=bot) <br>
 
