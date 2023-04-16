@@ -6,7 +6,7 @@
 
 ## Info
 
-This repo contains both a Python Discord bot and a JavaScript Discord bot, and in both their respective folders is a README containing info them.
+This repo contains both a Python Discord bot and a JavaScript Discord bot. In both their respective folders is a README containing info on them.
 
 The Python version was made during Dec. 2021 - Mar. 2022, while the JavaScript version is a current WIP which I started coding around Dec. 2022.
 
