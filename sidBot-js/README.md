@@ -24,4 +24,5 @@ A simple Discord bot made in Javascript using [discord.js](https://discord.js.or
 !chuck norris   - Bot gives user a good old Chuck Norris joke
 !btc            - Bot shows user current Bitcoin price in euro
 !eth            - Bot shows user current Ethereum price in euro
+!meme           - Bot summons a random meme from reddit
 ```
