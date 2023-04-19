@@ -1,4 +1,4 @@
-# 🤖sidBot | A Discord bot created by Sindre Kjelsrud
+# 🤖sidBot | A Discord bot
 
 **_Currently sidBot-js is the only one active, which is selfhosted by me_**
 
