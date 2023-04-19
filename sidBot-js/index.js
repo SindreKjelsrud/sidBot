@@ -44,7 +44,8 @@ client.on("messageCreate", (message) => {
                     '!kanye\n- Bot gives user a legendary Kanye quote \n\n' +
                     '!chuck norris\n- Bot gives user a good old Chuck Norris joke \n\n' +
                     '!btc\n- Bot shows user current Bitcoin price in euro \n\n' +
-                    '!eth\n- Bot shows user current Ethereum price in euro \n\n';
+                    '!eth\n- Bot shows user current Ethereum price in euro \n\n' +
+                    '!meme\n- Bot summons a random meme from reddit';
         const embedVar = new EmbedBuilder()
             .setColor(0x7B64FF)
             .setTitle('List of sidBots features/commands:')
@@ -167,6 +168,16 @@ client.on("messageCreate", async (melding) => {
             content: "Current price of Ethereum: " + price + "£",
         })
     }
+
+    // meme
+   if (melding.content === '!meme') {
+        let resp = await axios.get('https://meme-api.com/gimme');
+        const img = resp.data.preview[3];
+
+        melding.reply({
+            content: img,
+        })
+   }
 
 })
 
