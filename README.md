@@ -25,6 +25,8 @@ The reason why I moved over to JavaScript is because I read some place that the 
 ## Future plans:
 
 - [ ] An auto welcome message for new users on the server
+- [ ] !Xquote - Bot sends quotes from breaking bad, star wars etc.
+- [ ] !ascii {text} - Bot sends text in ascii-form
 - [ ] !rps - Rock-Paper-Scissors game
 - [ ] !poll - Bot lets user create a poll with emojis which indicates options
 - [ ] !movie - Bot sends a movie recommendation from a movie database
