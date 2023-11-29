@@ -31,5 +31,5 @@ The reason why I moved over to JavaScript is because I read some place that the 
 - [ ] !trivia - Bot sends a random trivia question both with and without multiple choice answers
 - [ ] !stats - Bot sends a statistic for the discord server, like total servermembers, bots and online members
 
-## 📸 Demo
+## 📸 Screenshot
 ![sidBot_README](https://github.com/SindreKjelsrud/sidBot/assets/93219711/ded84c68-2a9e-4c69-adba-66ded9a15511)
